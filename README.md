@@ -49,7 +49,7 @@ Do not use `--apply-code` until you have reviewed generated files.
 
 ## Requirements
 
-- Python 3.10+
+- Python 3.9+
 - Access to an Oracle database
 - Access to a PostgreSQL database
 
@@ -72,9 +72,22 @@ oracle-postgres-custom-migrator/
 ├── oracle_to_postgres_advanced.py
 ├── requirements.txt
 ├── README.md
+├── tests/
+├── .github/workflows/ci.yml
 ├── .gitignore
 └── LICENSE
 ```
+
+## Running tests
+
+This repository includes unit tests for the pure conversion helpers. They do not require live Oracle or PostgreSQL databases.
+
+```bash
+python -m pip install pytest
+pytest -q
+```
+
+`pytest` exits with code `5` when it finds zero tests. The included `tests/` directory prevents that GitHub Actions failure.
 
 ## Basic usage
 

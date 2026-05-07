@@ -8,3 +8,5 @@ converted_pg_sql/
 *.dmp
 .env
 .DS_Store
+
+.pytest_cache/
