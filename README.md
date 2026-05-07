@@ -49,9 +49,27 @@ Do not use `--apply-code` until you have reviewed generated files.
 
 ## Requirements
 
-- Python 3.9+
-- Access to an Oracle database
-- Access to a PostgreSQL database
+### Minimum supported versions
+
+| Component | Minimum supported version | Recommended version | Notes |
+|---|---:|---:|---|
+| Linux | Any modern Linux distribution | Ubuntu 22.04+ / Debian 12+ / RHEL 9+ | The project is intended for Linux CI and server use. |
+| Python | 3.9+ | 3.11+ | Tested with Python 3.9.25 in GitHub Actions-compatible environments. |
+| Oracle Database | 12.1+ | 19c+ | `python-oracledb` Thin mode requires Oracle Database 12.1 or newer. |
+| PostgreSQL | 10+ | 14+ / 15+ / 16+ | PostgreSQL 10 is the practical minimum because the converter can generate declarative partition DDL. |
+| pytest | 8.x | Latest stable | Used only for unit tests. |
+
+### Python dependencies
+
+- `oracledb`
+- `psycopg[binary]`
+
+You also need:
+
+- Network access to an Oracle database
+- Network access to a PostgreSQL database
+- Permission to read Oracle data dictionary views for the source schema
+- Permission to create schemas, tables, indexes, views, constraints, functions, procedures, and triggers in PostgreSQL if you use the apply options
 
 Install dependencies:
 
