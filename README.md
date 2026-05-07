@@ -83,6 +83,42 @@ Or install directly:
 pip install oracledb "psycopg[binary]"
 ```
 
+
+## Windows Support
+
+This project is cross-platform and can run on Windows 10/11 with Python 3.9+.
+
+Install dependencies from PowerShell:
+
+```powershell
+py -m pip install -r requirements.txt
+```
+
+Run from PowerShell:
+
+```powershell
+py .\oracle_to_postgres_advanced.py `
+  --oracle-user HR `
+  --oracle-password oracle_password `
+  --oracle-dsn "localhost:1521/ORCLPDB1" `
+  --oracle-schema HR `
+  --pg-dsn "postgresql://postgres:postgres_password@localhost:5432/targetdb" `
+  --pg-schema public `
+  --drop-existing `
+  --convert-partitions `
+  --apply-tables `
+  --copy-data `
+  --apply-post-data-objects
+```
+
+Windows notes:
+
+- Use PowerShell backticks `` ` `` for line continuation, not Linux backslashes.
+- `python-oracledb` Thin mode does not require Oracle Instant Client.
+- PostgreSQL must be reachable from the Windows machine.
+- Generated SQL files are written to `converted_pg_sql/` by default.
+- Windows paths such as `.\converted_pg_sql` also work.
+
 ## Project files
 
 ```text
